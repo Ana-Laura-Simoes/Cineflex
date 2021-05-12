@@ -1,0 +1,101 @@
+
+.header{
+    height: 67px;
+    width:100%;
+    background:#C3CFD9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#E8833A;
+    font-size: 34px;
+    text-align: center;
+}
+
+.titlePage{
+    height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#293845;
+    font-size: 24px;
+    text-align: center;
+}
+
+.MoviesList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  align-items: center; 
+}
+.movie{
+width: 145px;
+height: 209px;
+margin:20px;
+background: #FFFFFF;
+box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+border-radius: 3px;
+}
+
+.movie img{
+    width: 145px;
+    height: 209px; 
+}
+.sessionInfo{
+    padding-left:24px;
+    margin-bottom: 23px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sessionDay{
+    color:#293845;
+    font-size: 20px;
+    margin-bottom: 22px;
+}
+
+.sessionTime{
+    display:flex;
+   
+}
+
+.time{
+width: 83px;
+height: 43px;
+margin-left:9px;
+background: #E8833A;
+border-radius: 3px;
+text-align: center;
+padding:10px;
+font-size: 18px;
+color: #FFFFFF;
+}
+
+.footer{
+background:#DFE6ED;
+display: flex;
+justify-content: center;
+align-items: center;
+padding:18px;
+font-size: 26px;
+line-height: 30px;
+color: #293845;
+border-top: 1px solid #9EADBA;
+}
+
+.footerImg{
+background: #FFFFFF;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+border-radius: 2px;
+display:flex;
+align-items: center;
+justify-content: center;
+padding:5px;
+}
+
+.footerImg img{
+    width: 48px;
+    height: 72px;
+    }
+.footerTitle{
+    margin:14px;
+}    
