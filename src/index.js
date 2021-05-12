@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
-
   const [movieSession, setMovieSession] = useState([]);  
   const [movieTitle, setMovieTitle] = useState([]);
   const [movieImg, setMovieImg] = useState([]);  
@@ -17,7 +16,18 @@ function App() {
       <Header />
       <Switch>
       <Route path="/" exact>
-          <Movie/>          
+          <MoviesList/>          
+        </Route>
+
+      <Route path="/filme/:idMovie" exact>
+          <Movie 
+          movieSession={movieSession} 
+          setMovieSession={setMovieSession}
+          movieTitle={movieTitle} 
+          setMovieTitle={setMovieTitle}  
+          movieImg={movieImg} 
+          setMovieImg={setMovieImg}                 
+          />          
             
         </Route>
  

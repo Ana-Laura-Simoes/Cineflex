@@ -24,7 +24,7 @@
 .MoviesList{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; 
+  justify-content: center;
   align-items: center; 
 }
 .movie{
@@ -73,8 +73,6 @@ color: #FFFFFF;
 .footer{
 background:#DFE6ED;
 display: flex;
-justify-content: center;
-align-items: center;
 padding:18px;
 font-size: 26px;
 line-height: 30px;
