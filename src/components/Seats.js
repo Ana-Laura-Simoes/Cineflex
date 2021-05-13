@@ -71,16 +71,19 @@ setSessionSeats(NewArray);
         </div>
 
       </div>
-      <div className="user-data">
-        <div className="title">Nome do comprador:</div>
-        <input type="text" className="name" placeholder="Digite seu nome" />
-        <div className="title">CPF do comprador:</div>
-        <input type="text" className="cpf" placeholder="Digite seu CPF" />
-        <Link to="/sucesso">
-          <button className="reserve-seat">Reservar assento(s)</button>
-        </Link>
+
+      <div className="userData">
+        <div className="inputInfo">Nome do comprador:
+        <input type="text" className="name" placeholder="Digite seu nome" /></div>
+        <div className="inputInfo">CPF do comprador:
+        <input type="text" className="cpf" placeholder="Digite seu CPF" /></div>
       </div>
 
+     <div className="reserveSeat">
+      <Link to="/sucesso">
+          <button className="">Reservar assento(s)</button>
+        </Link>
+        </div>
     </>
   );
 }
