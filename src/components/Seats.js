@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 
-export default function SessionSeats() {
+export default function SessionSeats({tickets,setTickets}) {
   const { idSession } = useParams();
   const [sessionSeats, setSessionSeats] = useState([]);
 
@@ -24,6 +24,7 @@ export default function SessionSeats() {
 
 function toggleSelected(seat){
 console.log(seat);
+
 const NewArray= sessionSeats.map((s)=>{
     if(s.id===seat.id){
         s.selected=!s.selected;
@@ -33,7 +34,14 @@ const NewArray= sessionSeats.map((s)=>{
 setSessionSeats(NewArray);
 }
 
-
+function SelectedTickets(){
+    const NewArray=[];
+   sessionSeats.map((s)=>{
+        if(s.selected) NewArray.push(s.name);
+    });
+    console.log(NewArray);
+    setTickets(NewArray);
+}
 
 
 
@@ -81,7 +89,7 @@ setSessionSeats(NewArray);
 
      <div className="reserveSeat">
       <Link to="/sucesso">
-          <button className="">Reservar assento(s)</button>
+          <button onClick={SelectedTickets}>Reservar assento(s)</button>
         </Link>
         </div>
     </>

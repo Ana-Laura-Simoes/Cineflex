@@ -12,6 +12,7 @@ function App() {
   const [movieSession, setMovieSession] = useState([]);  
   const [movieTitle, setMovieTitle] = useState([]);
   const [movieImg, setMovieImg] = useState([]);  
+  const [tickets,setTickets] =useState([]);
 
   return (
     <BrowserRouter>
@@ -33,8 +34,17 @@ function App() {
         </Route>
 
         <Route path="/assentos/:idSession" exact>
-          <Seats/> 
-          <FooterSeats movieTitle={movieTitle} movieImg={movieImg} movieSession={movieSession}/>          
+          <Seats
+          tickets={tickets}
+          setTickets={setTickets}
+          />
+          
+           
+          <FooterSeats 
+          movieTitle={movieTitle} 
+          movieImg={movieImg} 
+          movieSession={movieSession}
+          />          
         </Route>
  
 
