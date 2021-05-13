@@ -35,7 +35,7 @@ export default function Session(props) {
           </div>
 
           <div className="sessionTime"> 
-          {showtimes.map((show) => <Link to={`/sessao/${show.id}`}><div className="time">{show.name}</div></Link> )}
+          {showtimes.map((show) => <Link to={`/assentos/${show.id}`}><div className="time">{show.name}</div></Link> )}
 
           </div>
         </div>
