@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import axios from "axios";
+
 
 export default function SessionSeats() {
   const { idSession } = useParams();
   const [sessionSeats, setSessionSeats] = useState([]);
-  const [isSelected, setIsSelected] = useState(false);
+
 
   useEffect(() => {
     const promise = axios.get(
@@ -15,7 +17,7 @@ export default function SessionSeats() {
 
     promise.then((r) => {
       setSessionSeats([...r.data.seats]);
-      console.log(r.data.seats);
+      //console.log(r.data.seats);
     });
   }, []);
 
@@ -78,6 +80,7 @@ setSessionSeats(NewArray);
           <button className="reserve-seat">Reservar assento(s)</button>
         </Link>
       </div>
+
     </>
   );
 }

@@ -96,6 +96,8 @@ padding:5px;
     }
 .footerTitle{
     margin:14px;
+    display:flex;
+    flex-direction: column;
 }    
 
 .seats{

@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
 
-export default function Session(props) {
+export default function Session( {movieSession,setMovieSession,movieTitle,setMovieTitle, movieImg,setMovieImg}) {
   const { idMovie } = useParams();  
-  const {movieSession, setMovieSession,movieTitle,setMovieTitle, movieImg,setMovieImg} = props;
   let showtimes=[];
+  const [Sessions, setSessions] = useState([]); 
   
   useEffect(() => {
     const promise = axios.get(
@@ -15,18 +15,23 @@ export default function Session(props) {
     );
 
     promise.then((r) => {
-      setMovieSession([...r.data.days]); 
+      setSessions([...r.data.days]); 
       setMovieTitle(r.data.title);
-      setMovieImg(r.data.posterURL);      
-      console.log(r.data.days)     
+      setMovieImg(r.data.posterURL);          
     });
   }, []);
 
+  function sessionSelected(day,time){
+ const NewArray={weekday:day,time:time}; 
+ setMovieSession(NewArray);  
+console.log(`lalala ${day} ${time}`);
+
+  }
 
   return (
     <>
       <div className="titlePage">Selecione o horário</div>
-      {movieSession.map((movie) => (
+      {Sessions.map((movie) => (
         showtimes=movie.showtimes,
 
         <div className="sessionInfo">
@@ -35,7 +40,7 @@ export default function Session(props) {
           </div>
 
           <div className="sessionTime"> 
-          {showtimes.map((show) => <Link to={`/assentos/${show.id}`}><div className="time">{show.name}</div></Link> )}
+          {showtimes.map((show) => <Link to={`/assentos/${show.id}`}><div className="time" onClick={()=>sessionSelected(movie.weekday,show.name)}>{show.name}</div></Link> )}
 
           </div>
         </div>

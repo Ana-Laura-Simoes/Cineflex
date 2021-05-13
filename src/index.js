@@ -3,6 +3,7 @@ import MoviesList from "./components/MoviesList";
 import Header from "./components/Header";
 import Movie from "./components/Movie";
 import Seats from "./components/Seats";
+import FooterSeats from "./components/FooterSeats";
 import { useState, useEffect } from "react";
 
 import { Switch, Route, BrowserRouter } from "react-router-dom";
@@ -32,7 +33,8 @@ function App() {
         </Route>
 
         <Route path="/assentos/:idSession" exact>
-          <Seats/>          
+          <Seats/> 
+          <FooterSeats movieTitle={movieTitle} movieImg={movieImg} movieSession={movieSession}/>          
         </Route>
  
 
