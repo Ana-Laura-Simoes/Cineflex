@@ -23,7 +23,12 @@ export default function SessionSeats({tickets,setTickets}) {
 
 
 function toggleSelected(seat){
-console.log(seat);
+//console.log(seat);
+
+if(!seat.isAvailable){
+    alert("Esse assento não está disponível");
+    return;
+}
 
 const NewArray= sessionSeats.map((s)=>{
     if(s.id===seat.id){
