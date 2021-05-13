@@ -14,10 +14,28 @@ export default function SessionSeats() {
     );
 
     promise.then((r) => {
-      setSessionSeats(r.data.seats);
+      setSessionSeats([...r.data.seats]);
       console.log(r.data.seats);
     });
   }, []);
+
+
+function toggleSelected(seat){
+console.log(seat);
+const NewArray= sessionSeats.map((s)=>{
+    if(s.id===seat.id){
+        s.selected=!s.selected;
+    }
+    return s;
+});
+setSessionSeats(NewArray);
+}
+
+
+
+
+
+
 
   return (
     <>
@@ -25,10 +43,10 @@ export default function SessionSeats() {
       <div className="seats">
         {sessionSeats.map((seat) => (
           <div
-            className={`seat ${isSelected ? "selected" : "avaible"} ${
+            className={`seat ${seat.selected ? "selected" : "avaible"} ${
               seat.isAvailable ? "available" : "unavailable"
             } `} 
-          >
+          onClick={()=>toggleSelected(seat)}>
             <div>{seat.name}</div>
           </div>
         ))}

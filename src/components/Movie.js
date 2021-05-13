@@ -15,7 +15,7 @@ export default function Session(props) {
     );
 
     promise.then((r) => {
-      setMovieSession(r.data.days); 
+      setMovieSession([...r.data.days]); 
       setMovieTitle(r.data.title);
       setMovieImg(r.data.posterURL);      
       console.log(r.data.days)     
