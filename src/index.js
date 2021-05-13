@@ -4,15 +4,19 @@ import Header from "./components/Header";
 import Movie from "./components/Movie";
 import Seats from "./components/Seats";
 import FooterSeats from "./components/FooterSeats";
+import Success from "./components/Success";
 import { useState, useEffect } from "react";
 
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
+    /*
+
+    */
   const [movieSession, setMovieSession] = useState([]);  
   const [movieTitle, setMovieTitle] = useState([]);
   const [movieImg, setMovieImg] = useState([]);  
-  const [tickets,setTickets] =useState([]);
+  const [tickets,setTickets] =useState({});
 
   return (
     <BrowserRouter>
@@ -44,9 +48,16 @@ function App() {
           movieTitle={movieTitle} 
           movieImg={movieImg} 
           movieSession={movieSession}
+          />    
+
+        </Route>
+        <Route path="/sucesso" exact>
+          <Success 
+         movieTitle={movieTitle} 
+         movieSession={movieSession}
+        tickets={tickets}
           />          
         </Route>
- 
 
       </Switch>
     </BrowserRouter>

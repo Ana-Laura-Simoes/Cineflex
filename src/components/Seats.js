@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import axios from "axios";
-
+import SeatsList from "./Render";
 
 export default function SessionSeats({tickets,setTickets}) {
   const { idSession } = useParams();
   const [sessionSeats, setSessionSeats] = useState([]);
+  const [name, setName] = useState("");
+  const [cpf, setCpf]=useState("");
 
 
   useEffect(() => {
@@ -44,10 +46,14 @@ function SelectedTickets(){
    sessionSeats.map((s)=>{
         if(s.selected) NewArray.push(s.name);
     });
-    console.log(NewArray);
-    setTickets(NewArray);
+    setUpTicket(NewArray);
 }
 
+function setUpTicket(array){
+    const NewArray={buyerName:name,buyerCpf:cpf,seats:array};
+    setTickets(NewArray);
+    
+}
 
 
 
@@ -57,40 +63,25 @@ function SelectedTickets(){
       <div className="titlePage">Selecione o(s) assento(s)</div>
       <div className="seats">
         {sessionSeats.map((seat) => (
-          <div
-            className={`seat ${seat.selected ? "selected" : "avaible"} ${
-              seat.isAvailable ? "available" : "unavailable"
-            } `} 
-          onClick={()=>toggleSelected(seat)}>
-            <div>{seat.name}</div>
-          </div>
+       <SeatsList
+       seat={seat}
+       toggleSelected={toggleSelected}
+       />
         ))}
       </div>
 
       <div className="seats-subtitle">
-        <div>
-          <div className="circle selected"></div>
-          <div className="title">Selecionado</div>
-        </div>
-        
-        <div>
-          <div className="circle available"></div>
-          <div className="title">Disponível</div>
-        </div>
-
-        <div>
-          <div className="circle unavailable"></div>
-          <div className="title">Indisponível</div>
-        </div>
-
+        <SeatsSubtitle class={"selected"} state={"Selecionado"}/>
+        <SeatsSubtitle class={""} state={"Disponível"}/>
+        <SeatsSubtitle state={"Indisponível"} class={"unavailable"}/>
       </div>
 
       <div className="userData">
         <div className="inputInfo">Nome do comprador:
-        <input type="text" className="name" placeholder="Digite seu nome" /></div>
+        <input type="text" className="name" placeholder="Digite seu nome"  value={name} onChange={e => setName(e.target.value)}/></div>
         <div className="inputInfo">CPF do comprador:
-        <input type="text" className="cpf" placeholder="Digite seu CPF" /></div>
-      </div>
+        <input type="text" className="cpf" placeholder="Digite seu CPF" value={cpf} onChange={e => setCpf(e.target.value)} /></div>
+        </div>
 
      <div className="reserveSeat">
       <Link to="/sucesso">
@@ -100,3 +91,15 @@ function SelectedTickets(){
     </>
   );
 }
+
+
+
+function SeatsSubtitle(props){
+    return(
+        <div>
+          <div className={`circle ${props.class}`}></div>
+          <div className="title">{props.state}</div>
+        </div>
+    );
+}
+

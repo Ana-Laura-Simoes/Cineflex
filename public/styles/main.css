@@ -187,3 +187,36 @@ line-height: 21px;
 font-style: italic;
 color: #AFAFAF;
 }
+
+.titleSuccess{ 
+font-weight: bold;
+font-size: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: #247A6B;
+padding:24px;
+}
+.ticketSuccess{
+    margin-bottom:62px;
+}
+.ticketInfo{
+padding:30px;
+display: flex;
+flex-direction: column;
+color: #293845;
+justify-content: space-between;
+}
+
+.ticketInfo .title{
+    display: block;
+    margin-bottom:10px;
+    font-weight: bold;
+    font-size: 24px;
+    
+}
+
+.ticketInfo .infoText{
+font-size: 22px;
+}

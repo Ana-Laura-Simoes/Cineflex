@@ -21,8 +21,8 @@ export default function Session( {movieSession,setMovieSession,movieTitle,setMov
     });
   }, []);
 
-  function sessionSelected(day,time){
- const NewArray={weekday:day,time:time}; 
+  function sessionSelected(day,time,date){
+ const NewArray={weekday:day,time:time,date:date}; 
  setMovieSession(NewArray);  
 console.log(`lalala ${day} ${time}`);
 
@@ -40,7 +40,7 @@ console.log(`lalala ${day} ${time}`);
           </div>
 
           <div className="sessionTime"> 
-          {showtimes.map((show) => <Link to={`/assentos/${show.id}`}><div className="time" onClick={()=>sessionSelected(movie.weekday,show.name)}>{show.name}</div></Link> )}
+          {showtimes.map((show) => <Link to={`/assentos/${show.id}`}><div className="time" onClick={()=>sessionSelected(movie.weekday,show.name,movie.date)}>{show.name}</div></Link> )}
 
           </div>
         </div>
