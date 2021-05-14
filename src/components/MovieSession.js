@@ -31,7 +31,7 @@ export default function Session( {movieInfo,setMovieInfo}) {
 
   return (
     <>
-      <div className="titlePage">Selecione o horário</div>
+    <div className="titlePage">Selecione o horário</div>
       {Sessions.map((movie) => (
         showtimes=movie.showtimes,
 
@@ -45,7 +45,11 @@ export default function Session( {movieInfo,setMovieInfo}) {
 
           </div>
         </div>
+    
+
       ))};     
+  
+
      <Footer img={movieInfo.img} title={movieInfo.movie}/>    
     </>
   );

@@ -1,4 +1,6 @@
-
+body{
+    font-family: 'Roboto', sans-serif;
+}
 .header{
     height: 67px;
     width:100%;
@@ -70,7 +72,7 @@ font-size: 18px;
 color: #FFFFFF;
 }
 
-.footer{
+.footer{ 
 background:#DFE6ED;
 display: flex;
 padding:18px;

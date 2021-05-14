@@ -47,7 +47,9 @@ function SelectedTickets(){
         ArraySeat.push(s.name)
         }
     });
+    if(name&&cpf&&(ArrayId.length!==0))
     setUpTicket(ArrayId,ArraySeat);
+    else return;
 }
 
 function setUpTicket(arrayid,arrayseat){
@@ -107,4 +109,3 @@ function SeatsSubtitle(props){
         </div>
     );
 }
-
