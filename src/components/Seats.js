@@ -19,14 +19,11 @@ export default function SessionSeats({movieInfo,setMovieInfo}) {
 
     promise.then((r) => {
       setSessionSeats([...r.data.seats]);
-      //console.log(r.data.seats);
     });
   }, []);
 
 
 function toggleSelected(seat){
-//console.log(seat);
-
 if(!seat.isAvailable){
     alert("Esse assento não está disponível");
     return;
@@ -50,8 +47,10 @@ function SelectedTickets(){
 }
 
 function setUpTicket(array){
-    const NewArray={buyerName:name,buyerCpf:cpf,seats:array};
-    setMovieInfo({...movieInfo,...NewArray});
+    const NewArray={name:name,cpf:cpf,ids:array};
+    const promise = axios.post( `https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many`,NewArray);
+      promise.then((res) => console.log(res));
+      setMovieInfo({...movieInfo,...NewArray});
     
 }
 
