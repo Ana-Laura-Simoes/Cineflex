@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import SeatsList from "./Render";
 
-export default function SessionSeats({tickets,setTickets}) {
+export default function SessionSeats({movieInfo,setMovieInfo}) {
   const { idSession } = useParams();
   const [sessionSeats, setSessionSeats] = useState([]);
   const [name, setName] = useState("");
@@ -51,7 +51,7 @@ function SelectedTickets(){
 
 function setUpTicket(array){
     const NewArray={buyerName:name,buyerCpf:cpf,seats:array};
-    setTickets(NewArray);
+    setMovieInfo({...movieInfo,...NewArray});
     
 }
 

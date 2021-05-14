@@ -4,28 +4,29 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Footer";
 
-export default function Session( {movieSession,setMovieSession,movieTitle,setMovieTitle, movieImg,setMovieImg}) {
+export default function Session( {movieInfo,setMovieInfo}) {
   const { idMovie } = useParams();  
   let showtimes=[];
   const [Sessions, setSessions] = useState([]); 
+ 
   
   useEffect(() => {
+    
     const promise = axios.get(
       `https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies/${idMovie}/showtimes`
     );
 
     promise.then((r) => {
-      setSessions([...r.data.days]); 
-      setMovieTitle(r.data.title);
-      setMovieImg(r.data.posterURL);          
+      setSessions([...r.data.days]);
+      const INFO={movie:r.data.title,img:r.data.posterURL};
+      setMovieInfo({...INFO});
+    
     });
   }, []);
 
   function sessionSelected(day,time,date){
  const NewArray={weekday:day,time:time,date:date}; 
- setMovieSession(NewArray);  
-console.log(`lalala ${day} ${time}`);
-
+ setMovieInfo({...movieInfo,...NewArray});
   }
 
   return (
@@ -45,7 +46,7 @@ console.log(`lalala ${day} ${time}`);
           </div>
         </div>
       ))};     
-     <Footer img={movieImg} title={movieTitle}/>    
+     <Footer img={movieInfo.img} title={movieInfo.movie}/>    
     </>
   );
 }

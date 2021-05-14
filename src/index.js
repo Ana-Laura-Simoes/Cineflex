@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom";
 import MoviesList from "./components/MoviesList";
 import Header from "./components/Header";
-import Movie from "./components/Movie";
+import Movie from "./components/MovieSession";
 import Seats from "./components/Seats";
 import FooterSeats from "./components/FooterSeats";
 import Success from "./components/Success";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
@@ -13,10 +13,7 @@ function App() {
     /*
 
     */
-  const [movieSession, setMovieSession] = useState([]);  
-  const [movieTitle, setMovieTitle] = useState([]);
-  const [movieImg, setMovieImg] = useState([]);  
-  const [tickets,setTickets] =useState({});
+  const [movieInfo,setMovieInfo] =useState({});
 
   return (
     <BrowserRouter>
@@ -28,35 +25,28 @@ function App() {
 
       <Route path="/sessoes/:idMovie" exact>
           <Movie 
-          movieSession={movieSession} 
-          setMovieSession={setMovieSession}
-          movieTitle={movieTitle} 
-          setMovieTitle={setMovieTitle}  
-          movieImg={movieImg} 
-          setMovieImg={setMovieImg}                 
+          movieInfo={movieInfo}
+          setMovieInfo={setMovieInfo}                
           />              
         </Route>
 
         <Route path="/assentos/:idSession" exact>
           <Seats
-          tickets={tickets}
-          setTickets={setTickets}
+          movieInfo={movieInfo}
+          setMovieInfo={setMovieInfo}          
           />
           
            
-          <FooterSeats 
-          movieTitle={movieTitle} 
-          movieImg={movieImg} 
-          movieSession={movieSession}
+          <FooterSeats
+          movieInfo={movieInfo}
+          setMovieInfo={setMovieInfo} 
           />    
 
         </Route>
         <Route path="/sucesso" exact>
           <Success 
-         movieTitle={movieTitle} 
-         movieSession={movieSession}
-        tickets={tickets}
-          />          
+          movieInfo={movieInfo}
+          />
         </Route>
 
       </Switch>

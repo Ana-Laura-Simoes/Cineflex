@@ -1,10 +1,10 @@
 
 import { Link } from "react-router-dom";
-export default function Success({movieTitle,movieSession,tickets}){
+export default function Success({movieInfo}){
 //const seats=tickets.seats;
    /* */
 //console.log(seats);
-console.log(tickets.seats);
+//console.log(tickets.seats);
     return(
 <>
 <div className="titleSuccess">Pedido feito<br /> com sucesso!</div>
@@ -12,17 +12,17 @@ console.log(tickets.seats);
 <div className="ticketSuccess">
 <div className="ticketInfo">
     <span className="title">Filme e sessão</span>
-    <span className="infoText">{movieTitle}<br />{movieSession.date} {movieSession.time}</span>
+    <span className="infoText">{movieInfo.movie}<br />{movieInfo.date} {movieInfo.time}</span>
 </div>
 
 <div className="ticketInfo">
     <span className="title">Ingressos</span>
-    <div className="infoText">{tickets.seats.map((s)=> {return (<span>Assento {s}<br/ ></span>)})}</div>
+    <div className="infoText">{movieInfo.seats.map((s)=> {return (<span>Assento {s}<br/ ></span>)})}</div>
 </div>
 
 <div className="ticketInfo">
     <span className="title">Comprador</span>
-    <span className="infoText">Nome: {tickets.buyerName}<br />CPF: {tickets.buyerCpf}</span>
+    <span className="infoText">Nome: {movieInfo.buyerName}<br />CPF: {movieInfo.buyerCpf}</span>
 </div>
 </div>
 
