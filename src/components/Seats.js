@@ -39,17 +39,23 @@ setSessionSeats(NewArray);
 }
 
 function SelectedTickets(){
-    const NewArray=[];
+    const ArrayId=[];
+    const ArraySeat=[]
    sessionSeats.map((s)=>{
-        if(s.selected) NewArray.push(s.name);
+        if(s.selected) {
+        ArrayId.push(s.id)
+        ArraySeat.push(s.name)
+        }
     });
-    setUpTicket(NewArray);
+    setUpTicket(ArrayId,ArraySeat);
 }
 
-function setUpTicket(array){
-    const NewArray={name:name,cpf:cpf,ids:array};
-    const promise = axios.post( `https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many`,NewArray);
+function setUpTicket(arrayid,arrayseat){
+    const NewArray={name:name,cpf:cpf,ids:arrayid,seats:arrayseat};
+    const data={name:name,cpf:cpf,ids:arrayid};
+    const promise = axios.post( `https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many`,data);
       promise.then((res) => console.log(res));
+      promise.catch(()=>alert("erro!"));
       setMovieInfo({...movieInfo,...NewArray});
     
 }

@@ -2,8 +2,9 @@
 import { Link } from "react-router-dom";
 export default function Success({movieInfo}){
 //const seats=tickets.seats;
-   /* */
-//console.log(seats);
+   /*
+</div> */
+console.log(movieInfo.seats);
 //console.log(tickets.seats);
     return(
 <>
@@ -17,8 +18,8 @@ export default function Success({movieInfo}){
 
 <div className="ticketInfo">
     <span className="title">Ingressos</span>
-    <div className="infoText">{movieInfo.ids.map((s)=> {return (<span>Assento {s}<br/ ></span>)})}</div>
-</div>
+    <div className="infoText">{movieInfo.seats.map((s)=> {return (<span>Assento {s}<br/ ></span>)})}</div>
+    </div>
 
 <div className="ticketInfo">
     <span className="title">Comprador</span>
